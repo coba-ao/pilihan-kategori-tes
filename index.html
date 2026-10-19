@@ -17,7 +17,7 @@
     --border:#E6EFEA;
   }
 
-  body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-main); color: var(--text-primary); line-height: 1.6; padding-bottom: 80px; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-main); color: var(--text-primary); line-height: 1.6; padding-bottom: 0; display: flex; flex-direction: column; min-height: 100vh; }
 
   /* HEADER */
   .header { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,.03); position: sticky; top: 0; z-index: 100; }
@@ -27,7 +27,7 @@
   .btn-back:hover { color: var(--accent); transform: translateX(-3px); }
 
   /* CONTAINER & TITLE */
-  .container { max-width: 1300px; margin: 60px auto; padding: 0 20px; }
+  .container { max-width: 1300px; margin: 60px auto; padding: 0 20px; flex: 1; width: 100%; }
   .page-title { text-align: center; margin-bottom: 50px; }
   .page-title h1 { font-family: 'Montserrat', sans-serif; font-size: 3.2rem; color: var(--core); margin-bottom: 15px; font-weight: 900; letter-spacing: -1.5px; text-transform: uppercase; }
   .page-title p { color: var(--text-secondary); font-size: 1.1rem; font-weight: 500; }
@@ -115,7 +115,7 @@
   .btn-masuk { background: #fff; color: var(--core); }
   .card:hover .btn-masuk { background: var(--accent); color: var(--core-dark); }
 
-  /* MODAL POPUP STYLING */
+  /* MODAL POPUP KATEGORI STYLING */
   .modal-overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -230,6 +230,35 @@
 
   .btn-tutup:hover { color: var(--core); }
 
+  /* ================= FOOTER SERAGAM ================= */
+  .footer-wrapper { background: #072a1d; width: 100%; margin-top: 60px; }
+  .footer-content { max-width: 1100px; margin: 0 auto; color: rgba(255,255,255,.6); text-align: center; padding: 40px 20px; font-size: 0.9rem; }
+  .social-horizontal { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 25px; }
+  .social-btn { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; cursor: pointer; border: none; transition: 0.3s; background: rgba(255,255,255,0.1); }
+  .social-btn:hover { background: rgba(255,255,255,0.2); transform: translateY(-3px) scale(1.05); }
+
+  /* ================= FLOATING WA & MODAL WA ================= */
+  .float-wa { position: fixed; bottom: 40px; right: 40px; background: #22C55E; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(34,197,94,0.4); z-index: 999; transition: 0.3s; text-decoration: none; cursor: pointer; border: none;}
+  .float-wa:hover { transform: scale(1.1) rotate(10deg); background: #16A34A; }
+
+  .modal-wa-overlay { display: none; position: fixed; inset: 0; background: rgba(7, 42, 29, 0.85); backdrop-filter: blur(5px); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
+  .modal-wa-overlay.active { display: flex; }
+  .modal-wa-box { background: #fff; border-radius: 24px; width: 100%; max-width: 480px; padding: 35px 30px; text-align: left; box-shadow: 0 25px 60px rgba(0,0,0,0.4); animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  @keyframes popIn { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  
+  .modal-wa-box h3 { text-align: center; font-size: 1.5rem; color: var(--core); margin-bottom: 10px; font-family: 'Montserrat', sans-serif; font-weight: 900;}
+  .modal-wa-box p { text-align: center; font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 25px; }
+  
+  .form-group { margin-bottom: 15px; }
+  .form-group label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 5px; color: var(--text-primary); }
+  .form-group input, .form-group select { width: 100%; padding: 12px 15px; border: 1.5px solid #E5E7EB; border-radius: 10px; font-size: 0.95rem; background: #F9FAFB; font-family: 'Plus Jakarta Sans', sans-serif;}
+  .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--core); background: #fff;}
+  
+  .btn-wa-kirim { display: block; width: 100%; padding: 15px; background: #22C55E; color: #fff; border: none; border-radius: 12px; font-weight: 800; font-size: 1rem; cursor: pointer; margin-top: 15px; text-align: center; font-family: 'Montserrat', sans-serif;}
+  .btn-wa-kirim:hover { background: #16A34A; }
+  .btn-wa-tutup { background: transparent; color: #9CA3AF; border: none; font-size: 0.95rem; font-weight: 600; cursor: pointer; margin-top: 15px; transition: 0.3s; width: 100%; text-align: center; }
+  .btn-wa-tutup:hover { color: var(--core); }
+
   /* RESPONSIVE */
   @media (max-width: 1100px) {
     .grid-kategori { grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -248,6 +277,9 @@
     .card-content h3 { font-size: 1.2rem; margin-bottom: 5px; }
     .card-content p { display: none; }
     .btn { padding: 10px; font-size: 11px; }
+    .float-wa { width: 50px; height: 50px; bottom: 20px; right: 20px; }
+    .float-wa svg { width: 28px; height: 28px;}
+    .modal-wa-box { padding: 25px 20px; }
   }
 </style>
 </head>
@@ -259,7 +291,7 @@
       <img src="https://i.imgur.com/fyKfXaZ.png" alt="Logo">
       BrainUp.Id
     </a>
-    <a href="https://web-awal-sigmora.vercel.app/" class="btn-back">← Kembali ke Bimbel</a>
+    <a href="https://web-bimbel-lu.vercel.app" class="btn-back">← Kembali ke Bimbel</a>
   </div>
 
   <!-- KONTEN -->
@@ -354,7 +386,7 @@
     </div>
   </div>
 
-  <!-- MODAL POP-UP -->
+  <!-- MODAL POP-UP KATEGORI -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-card">
       <h2 id="modalTitle">SKD</h2>
@@ -388,14 +420,88 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT UNTUK MODAL -->
+  <!-- ================= FOOTER SERAGAM ================= -->
+  <div class="footer-wrapper">
+    <div class="footer-content">
+      <div class="social-horizontal">
+        <a href="https://www.instagram.com/folkative/" target="_blank" class="social-btn" title="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="https://www.tiktok.com/@brainup.ac" target="_blank" class="social-btn" title="TikTok">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@BrainUp_ac" target="_blank" class="social-btn" title="YouTube">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.582 6.186a2.6 2.6 0 0 0-1.838-1.84C18.16 4 12 4 12 4s-6.16 0-7.744.346a2.6 2.6 0 0 0-1.838 1.84C2 7.78 2 12 2 12s0 4.22.418 5.814a2.6 2.6 0 0 0 1.838 1.84C5.84 20 12 20 12 20s6.16 0 7.744-.346a2.6 2.6 0 0 0 1.838-1.84C22 16.22 22 12 22 12s0-4.22-.418-5.814zM9.996 15.464V8.536L16 12l-6.004 3.464z"/></svg>
+        </a>
+      </div>
+      <p>© 2026 SIGMORA - Bimbel & Platform TryOut Sekolah Kedinasan.</p>
+      <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 10px;">Membangun masa depan, satu tryout dalam satu waktu.</p>
+    </div>
+  </div>
+
+  <!-- ================= FLOATING WHATSAPP ================= -->
+  <button onclick="bukaModalWa()" class="float-wa" title="Hubungi Admin">
+    <svg width="35" height="35" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 2C6.51 2 2.014 6.496 2.014 12.017c0 1.766.461 3.49 1.336 5.012L2 22l5.108-1.338A9.968 9.968 0 0012.03 22c5.521 0 10.017-4.496 10.017-10.017S17.552 2 12.031 2zm5.223 14.03c-.222.625-1.286 1.196-1.762 1.242-.476.047-1.065.21-3.488-1.007-2.914-1.466-4.763-4.478-4.908-4.68-.144-.203-1.166-1.554-1.166-2.966 0-1.412.735-2.104 1.003-2.392.268-.288.587-.36.783-.36.196 0 .392.004.563.013.183.01.43-.07.67.515.245.595.833 2.053.908 2.203.075.15.125.325.025.525-.1.2-.375.604-.6.83-.225.225-.35.375-.225.6.125.225.556.917 1.192 1.486.816.728 1.504.955 1.717 1.062.212.107.338.088.463-.054.125-.142.535-.625.678-.838.143-.213.286-.178.48-.104.195.074 1.238.584 1.45.69.212.107.35.16.4.25.05.09.05.522-.172 1.147z"/></svg>
+  </button>
+
+  <!-- ================= MODAL FORM WA ================= -->
+  <div class="modal-wa-overlay" id="modalWa">
+    <div class="modal-wa-box">
+      <h3>Konsultasi Bimbel</h3>
+      <p>Isi data singkat ini agar Admin kami bisa memberikan rekomendasi terbaik untukmu.</p>
+      
+      <form id="formWa" onsubmit="kirimWa(event)">
+        <div class="form-group">
+          <label>Nama Lengkap</label>
+          <input type="text" id="waNama" placeholder="Masukkan nama Anda" required>
+        </div>
+        <div class="form-group">
+          <label>Asal Kota / Sekolah</label>
+          <input type="text" id="waAsal" placeholder="Contoh: SMAN 1 Jakarta" required>
+        </div>
+        <div class="form-group">
+          <label>Pilihan Program</label>
+          <select id="waProgram" required>
+            <option value="" disabled selected>Pilih program...</option>
+            <option value="Bimbel Reguler">Bimbel Reguler</option>
+            <option value="Bimbel Privat">Bimbel Privat (1-on-1)</option>
+            <option value="Kelas Online / Zoom">Kelas Online / Zoom</option>
+            <option value="TryOut & Pembahasan">Beli Paket TryOut</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Target / Kelas</label>
+          <select id="waTarget" required>
+            <option value="" disabled selected>Pilih target...</option>
+            <option value="TKA SD">TKA SD</option>
+            <option value="TKA SMP">TKA SMP</option>
+            <option value="SKD CPNS">SKD CPNS</option>
+            <option value="TNI">TNI (AD / AL / AU)</option>
+            <option value="Polri">Polri</option>
+            <option value="TPA STAN">TPA STAN</option>
+            <option value="TBI STAN">TBI STAN</option>
+            <option value="STIS">STIS</option>
+            <option value="Sekolah Kedinasan Lain">Sekolah Kedinasan Lain</option>
+            <option value="UNHAN">UNHAN</option>
+            <option value="Tutor Mata Pelajaran">Tutor Mata Pelajaran</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-wa-kirim">Kirim & Chat Admin</button>
+        <button type="button" class="btn-wa-tutup" onclick="tutupModalWa()">Batal</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= SCRIPT ================= -->
   <script>
+    // ===============================
+    // SCRIPT UNTUK MODAL KATEGORI
+    // ===============================
     const modalOverlay = document.getElementById('modalOverlay');
     const modalTitle = document.getElementById('modalTitle');
     const linkMateri = document.getElementById('linkMateri');
     const linkTO = document.getElementById('linkTO');
 
-    // Fungsi buka modal dan ganti link sesuai kategori
     function bukaModal(namaKategori, urlMateri, urlTO) {
       modalTitle.innerText = namaKategori;
       linkMateri.href = urlMateri;
@@ -403,17 +509,51 @@
       modalOverlay.classList.add('active');
     }
 
-    // Fungsi tutup modal
     function tutupModal() {
       modalOverlay.classList.remove('active');
     }
 
-    // Tutup modal kalau klik di luar area kotak putih
     modalOverlay.addEventListener('click', function(e) {
       if (e.target === modalOverlay) {
         tutupModal();
       }
     });
+
+    // ===============================
+    // SCRIPT UNTUK MODAL WA
+    // ===============================
+    function bukaModalWa() {
+      document.getElementById('modalWa').classList.add('active');
+    }
+
+    function tutupModalWa() {
+      document.getElementById('modalWa').classList.remove('active');
+    }
+
+    document.getElementById('modalWa').addEventListener('click', function(e) { 
+      if (e.target === this) { 
+        tutupModalWa(); 
+      } 
+    });
+
+    function kirimWa(event) {
+      event.preventDefault(); 
+      
+      const NOMOR_WA_ADMIN = "62895615420009"; 
+
+      const nama = document.getElementById('waNama').value;
+      const asal = document.getElementById('waAsal').value;
+      const program = document.getElementById('waProgram').value;
+      const target = document.getElementById('waTarget').value;
+
+      const pesan = `Halo Admin SIGMORA,%0A%0ASaya ingin konsultasi mengenai bimbel.%0A%0A*Nama:* ${nama}%0A*Asal/Kota:* ${asal}%0A*Program:* ${program}%0A*Target:* ${target}%0A%0AMohon info selengkapnya ya Kak. Terima kasih!`;
+      
+      const urlWa = `https://wa.me/${NOMOR_WA_ADMIN}?text=${pesan}`;
+      
+      window.open(urlWa, '_blank');
+      
+      tutupModalWa();
+    }
   </script>
 
 </body>
