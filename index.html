@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kategori Tes - SIGMORA</title>
-<!-- FONT BARU: Montserrat (Tebal/Tegas), Plus Jakarta Sans (Rapi) -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -18,7 +17,7 @@
     --border:#E6EFEA;
   }
   
-  body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-main); color: var(--text-primary); line-height: 1.6; padding-bottom: 80px; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-main); color: var(--text-primary); line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
   
   /* HEADER */
   .header { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,.03); position: sticky; top: 0; z-index: 100; }
@@ -28,7 +27,7 @@
   .btn-back:hover { color: var(--accent); transform: translateX(-3px); }
 
   /* CONTAINER & TITLE */
-  .container { max-width: 1300px; margin: 60px auto; padding: 0 20px; }
+  .container { max-width: 1300px; margin: 60px auto 60px auto; padding: 0 20px; flex: 1; width: 100%; }
   .page-title { text-align: center; margin-bottom: 50px; }
   
   .page-title h1 { font-family: 'Montserrat', sans-serif; font-size: 3.2rem; color: var(--core); margin-bottom: 15px; font-weight: 900; letter-spacing: -1.5px; text-transform: uppercase; }
@@ -89,6 +88,31 @@
   .btn-tutup { background: transparent; color: #9CA3AF; border: none; font-size: 0.95rem; font-weight: 600; cursor: pointer; margin-top: 10px; transition: 0.3s; }
   .btn-tutup:hover { color: var(--core); }
 
+  /* ================= FOOTER SERAGAM ================= */
+  .footer-wrapper { background: #072a1d; width: 100%; margin-top: auto; /* Ganti jadi auto biar nempel di bawah */ }
+  .footer-content { max-width: 1100px; margin: 0 auto; color: rgba(255,255,255,.6); text-align: center; padding: 40px 20px; font-size: 0.9rem; }
+  .social-horizontal { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 25px; }
+  .social-btn { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; cursor: pointer; border: none; transition: 0.3s; background: rgba(255,255,255,0.1); }
+  .social-btn:hover { background: rgba(255,255,255,0.2); transform: translateY(-3px) scale(1.05); }
+
+  /* ================= FLOATING WA & MODAL ================= */
+  .float-wa { position: fixed; bottom: 40px; right: 40px; background: #22C55E; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(34,197,94,0.4); z-index: 999; transition: 0.3s; text-decoration: none; cursor: pointer; border: none;}
+  .float-wa:hover { transform: scale(1.1) rotate(10deg); background: #16A34A; }
+
+  #modalWa .modal-box { max-width: 480px; text-align: left; }
+  #modalWa .modal-box h3 { text-align: center; font-size: 1.5rem; color: var(--core); margin-bottom: 10px;}
+  #modalWa .modal-box p { text-align: center; font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 25px; }
+  
+  .form-group { margin-bottom: 15px; }
+  .form-group label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 5px; color: var(--text-primary); }
+  .form-group input, .form-group select { width: 100%; padding: 12px 15px; border: 1.5px solid #E5E7EB; border-radius: 10px; font-size: 0.95rem; background: #F9FAFB; font-family: 'Plus Jakarta Sans', sans-serif;}
+  .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--core); background: #fff;}
+  
+  .btn-wa-kirim { display: block; width: 100%; padding: 15px; background: #22C55E; color: #fff; border: none; border-radius: 12px; font-weight: 800; font-size: 1rem; cursor: pointer; margin-top: 15px; text-align: center; font-family: 'Montserrat', sans-serif;}
+  .btn-wa-kirim:hover { background: #16A34A; }
+  .btn-tutup-wa { background: transparent; color: #9CA3AF; border: none; font-size: 0.95rem; font-weight: 600; cursor: pointer; margin-top: 15px; transition: 0.3s; width: 100%; text-align: center; }
+  .btn-tutup-wa:hover { color: var(--core); }
+
   /* RESPONSIVE */
   @media (max-width: 1100px) {
     .grid-kategori { grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -107,11 +131,11 @@
     .card-content h3 { font-size: 1.2rem; margin-bottom: 5px; }
     .card-content p { display: none; }
     .btn { padding: 10px; font-size: 11px; }
-    
     .modal-box { padding: 25px 20px; }
-    .pilihan-btn { padding: 15px; gap: 12px; }
+    .pilihan-btn { padding: 15px; gap: 12px; font-size: 0.95rem; }
     .pilihan-btn svg { width: 28px; height: 28px; }
-    .pilihan-btn { font-size: 0.95rem; }
+    .float-wa { width: 50px; height: 50px; bottom: 20px; right: 20px; }
+    .float-wa svg { width: 28px; height: 28px;}
   }
 </style>
 </head>
@@ -133,124 +157,166 @@
       <p>Temukan simulasi ujian yang sesuai dengan targetmu.</p>
     </div>
 
-       <div class="grid-kategori">
+    <div class="grid-kategori">
       
       <!-- 1. SKD -->
-      <a href="https://pilihan-to-skd.vercel.app/" class="card" style="background-image: url('https://i.imgur.com/wBGfvTs.png'); background-size: cover; background-position: center;">
+      <div class="card" onclick="bukaModal('SKD', 'https://web-skd-sigmora.vercel.app/', 'https://pilihan-to-skd.vercel.app/')" style="background-image: url('https://i.imgur.com/wBGfvTs.png'); background-size: cover; background-position: center;">
         <div class="card-overlay"></div>
         <div class="card-content">
           <h3>SKD</h3>
           <p>Simulasi CAT BKN asli (TWK, TIU, TKP) untuk CPNS dan Sekolah Kedinasan.</p>
-          <span class="btn btn-masuk">Masuk Katalog</span>
+          <span class="btn btn-masuk">Pilih Opsi</span>
         </div>
-      </a>
+      </div>
 
       <!-- 2. TKA SD -->
-      <a href="https://pilihan-to-tka-sd-sigmora.vercel.app/" class="card" style="background-image: url('https://i.imgur.com/e3uVACY.png'); background-size: cover; background-position: center;">
+      <div class="card" onclick="bukaModal('TKA SD', 'https://web-tka-sd-sigmora.vercel.app/', 'https://pilihan-to-tka-sd-sigmora.vercel.app/')" style="background-image: url('https://i.imgur.com/e3uVACY.png'); background-size: cover; background-position: center;">
         <div class="card-overlay"></div>
         <div class="card-content">
           <h3>TKA SD</h3>
           <p>Tes Kemampuan Akademik untuk tingkat Sekolah Dasar.</p>
-          <span class="btn btn-masuk">Masuk Katalog</span>
+          <span class="btn btn-masuk">Pilih Opsi</span>
         </div>
-      </a>
+      </div>
 
       <!-- 3. TKA SMP -->
-      <a href="https://pilihan-to-tka-smp-sigmora.vercel.app/" class="card" style="background-image: url('https://i.imgur.com/ZI1Woih.png'); background-size: cover; background-position: center;">
+      <div class="card" onclick="bukaModal('TKA SMP', 'https://web-tka-smp-sigmora.vercel.app/', 'https://pilihan-to-tka-smp-sigmora.vercel.app/')" style="background-image: url('https://i.imgur.com/ZI1Woih.png'); background-size: cover; background-position: center;">
         <div class="card-overlay"></div>
         <div class="card-content">
           <h3>TKA SMP</h3>
           <p>Tes Kemampuan Akademik untuk tingkat Sekolah Menengah Pertama.</p>
-          <span class="btn btn-masuk">Masuk Katalog</span>
+          <span class="btn btn-masuk">Pilih Opsi</span>
         </div>
-      </a>
+      </div>
 
       <!-- 4. TPA - STAN -->
-      <a href="https://pilihan-to-stan-sigmora.vercel.app/" class="card" style="background-image: url('https://i.imgur.com/yRz8yRA.png'); background-size: cover; background-position: center top;">
+      <div class="card" onclick="bukaModal('TPA - STAN', 'https://web-stan.vercel.app/', 'https://pilihan-to-stan-sigmora.vercel.app/')" style="background-image: url('https://i.imgur.com/yRz8yRA.png'); background-size: cover; background-position: center top;">
         <div class="card-overlay"></div>
         <div class="card-content">
           <h3>TPA - STAN</h3>
           <p>Latihan Tes Potensi Akademik khusus persiapan masuk STAN.</p>
-          <span class="btn btn-masuk">Masuk Katalog</span>
+          <span class="btn btn-masuk">Pilih Opsi</span>
         </div>
-      </a>
+      </div>
 
-      <!-- 5. TNI -->
-      <a href="https://pilihan-to-tni-sigmora.vercel.app/" class="card" style="background-image: url('https://i.imgur.com/Jmj1D7B.png'); background-size: cover; background-position: center top;">
+      <!-- 5. PSIKOTES TNI -->
+      <div class="card" onclick="bukaModal('Psikotes TNI', 'https://web-tni-sigmora.vercel.app/', 'https://pilihan-to-tni-sigmora.vercel.app/')" style="background-image: url('https://i.imgur.com/Jmj1D7B.png'); background-size: cover; background-position: center top;">
         <div class="card-overlay"></div>
         <div class="card-content">
           <h3>Psikotes TNI</h3>
           <p>Persiapan seleksi psikologi masuk Tentara Nasional Indonesia.</p>
-          <span class="btn btn-masuk">Masuk Katalog</span>
+          <span class="btn btn-masuk">Pilih Opsi</span>
         </div>
-      </a>
+      </div>
 
-      <!-- 6. POLRI -->
-      <a href="https://pilihan-to-polri-sigmoras.vercel.app/" class="card" style="background-image: url('https://i.imgur.com/358vWHc.png'); background-size: cover; background-position: center top;">
+      <!-- 6. PSIKOTES POLRI -->
+      <div class="card" onclick="bukaModal('Psikotes POLRI', 'https://web-polri-sigmora-rcyn.vercel.app/', 'https://pilihan-to-polri-sigmoras.vercel.app/')" style="background-image: url('https://i.imgur.com/358vWHc.png'); background-size: cover; background-position: center top;">
         <div class="card-overlay"></div>
         <div class="card-content">
           <h3>Psikotes POLRI</h3>
           <p>Persiapan seleksi psikologi masuk Kepolisian Negara Republik Indonesia.</p>
-          <span class="btn btn-masuk">Masuk Katalog</span>
+          <span class="btn btn-masuk">Pilih Opsi</span>
         </div>
-      </a>
+      </div>
 
-      <!-- 7. STIS -->
-      <a href="https://pilihan-to-stis-sigmora.vercel.app/" class="card" style="background-image: url('https://i.imgur.com/FsS3cu5.png'); background-size: cover; background-position: center top;">
+      <!-- 7. MTK STIS -->
+      <div class="card" onclick="bukaModal('MTK STIS', 'https://web-stis-vhre.vercel.app/', 'https://pilihan-to-stis-sigmora.vercel.app/')" style="background-image: url('https://i.imgur.com/FsS3cu5.png'); background-size: cover; background-position: center top;">
         <div class="card-overlay"></div>
         <div class="card-content">
           <h3>MTK STIS</h3>
           <p>Latihan soal Matematika khusus untuk persiapan seleksi masuk STIS.</p>
-          <span class="btn btn-masuk">Masuk Katalog</span>
+          <span class="btn btn-masuk">Pilih Opsi</span>
         </div>
-      </a>
+      </div>
 
       <!-- 8. UNHAN -->
-      <a href="https://pilihan-to-unhan-sigmora.vercel.app/" class="card" style="background-image: url('https://i.imgur.com/nf6mQkZ.png'); background-size: cover; background-position: center top;">
+      <div class="card" onclick="bukaModal('UNHAN', 'https://web-unhan.vercel.app/', 'https://pilihan-to-unhan-sigmora.vercel.app/')" style="background-image: url('https://i.imgur.com/nf6mQkZ.png'); background-size: cover; background-position: center top;">
         <div class="card-overlay"></div>
         <div class="card-content">
           <h3>Unhan</h3>
           <p>Persiapan seleksi masuk Universitas Pertahanan Republik Indonesia.</p>
-          <span class="btn btn-masuk">Masuk Katalog</span>
+          <span class="btn btn-masuk">Pilih Opsi</span>
         </div>
-      </a>
+      </div>
 
     </div>
+  </div>
 
-  <!-- ================= MODAL POP-UP KATEGORI ================= -->
-  <div class="modal-overlay" id="modalKategori">
+  <!-- ================= FOOTER SERAGAM ================= -->
+  <div class="footer-wrapper">
+    <div class="footer-content">
+      <div class="social-horizontal">
+        <a href="https://www.instagram.com/folkative/" target="_blank" class="social-btn" title="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="https://www.tiktok.com/@brainup.ac" target="_blank" class="social-btn" title="TikTok">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@BrainUp_ac" target="_blank" class="social-btn" title="YouTube">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.582 6.186a2.6 2.6 0 0 0-1.838-1.84C18.16 4 12 4 12 4s-6.16 0-7.744.346a2.6 2.6 0 0 0-1.838 1.84C2 7.78 2 12 2 12s0 4.22.418 5.814a2.6 2.6 0 0 0 1.838 1.84C5.84 20 12 20 12 20s6.16 0 7.744-.346a2.6 2.6 0 0 0 1.838-1.84C22 16.22 22 12 22 12s0-4.22-.418-5.814zM9.996 15.464V8.536L16 12l-6.004 3.464z"/></svg>
+        </a>
+      </div>
+      <p>© 2026 SIGMORA - Bimbel & Platform TryOut Sekolah Kedinasan.</p>
+      <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 10px;">Membangun masa depan, satu tryout dalam satu waktu.</p>
+    </div>
+  </div>
+
+  <!-- ================= FLOATING WHATSAPP ================= -->
+  <button onclick="bukaModalWa()" class="float-wa" title="Hubungi Admin">
+    <svg width="35" height="35" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 2C6.51 2 2.014 6.496 2.014 12.017c0 1.766.461 3.49 1.336 5.012L2 22l5.108-1.338A9.968 9.968 0 0012.03 22c5.521 0 10.017-4.496 10.017-10.017S17.552 2 12.031 2zm5.223 14.03c-.222.625-1.286 1.196-1.762 1.242-.476.047-1.065.21-3.488-1.007-2.914-1.466-4.763-4.478-4.908-4.68-.144-.203-1.166-1.554-1.166-2.966 0-1.412.735-2.104 1.003-2.392.268-.288.587-.36.783-.36.196 0 .392.004.563.013.183.01.43-.07.67.515.245.595.833 2.053.908 2.203.075.15.125.325.025.525-.1.2-.375.604-.6.83-.225.225-.35.375-.225.6.125.225.556.917 1.192 1.486.816.728 1.504.955 1.717 1.062.212.107.338.088.463-.054.125-.142.535-.625.678-.838.143-.213.286-.178.48-.104.195.074 1.238.584 1.45.69.212.107.35.16.4.25.05.09.05.522-.172 1.147z"/></svg>
+  </button>
+
+  <!-- ================= MODAL FORM WA ================= -->
+  <div class="modal-overlay" id="modalWa">
     <div class="modal-box">
-      <h3 id="modalTitle">Pilih Opsi</h3>
-      <p>Kamu mau belajar materinya atau langsung coba simulasi TryOut?</p>
+      <h3>Konsultasi Bimbel</h3>
+      <p>Isi data singkat ini agar Admin kami bisa memberikan rekomendasi terbaik untukmu.</p>
       
-      <!-- Tombol Materi -->
-      <a href="#" id="btnMateri" class="pilihan-btn pilihan-materi">
-        <div class="pilihan-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      <form id="formWa" onsubmit="kirimWa(event)">
+        <div class="form-group">
+          <label>Nama Lengkap</label>
+          <input type="text" id="waNama" placeholder="Masukkan nama Anda" required>
         </div>
-        <div class="pilihan-text">
-          Lihat Materi Belajar
-          <span>Baca modul & nonton video</span>
+        <div class="form-group">
+          <label>Asal Kota / Sekolah</label>
+          <input type="text" id="waAsal" placeholder="Contoh: SMAN 1 Jakarta" required>
         </div>
-      </a>
-      
-      <!-- Tombol TryOut -->
-      <a href="#" id="btnTryout" class="pilihan-btn pilihan-tryout">
-        <div class="pilihan-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+        <div class="form-group">
+          <label>Pilihan Program</label>
+          <select id="waProgram" required>
+            <option value="" disabled selected>Pilih program...</option>
+            <option value="Bimbel Reguler">Bimbel Reguler</option>
+            <option value="Bimbel Privat">Bimbel Privat (1-on-1)</option>
+            <option value="Kelas Online / Zoom">Kelas Online / Zoom</option>
+            <option value="TryOut & Pembahasan">Beli Paket TryOut</option>
+          </select>
         </div>
-        <div class="pilihan-text">
-          Mulai Simulasi TryOut
-          <span>Uji kemampuanmu sekarang</span>
+        <div class="form-group">
+          <label>Target / Kelas</label>
+          <select id="waTarget" required>
+            <option value="" disabled selected>Pilih target...</option>
+            <option value="TKA SD">TKA SD</option>
+            <option value="TKA SMP">TKA SMP</option>
+            <option value="SKD CPNS">SKD CPNS</option>
+            <option value="TNI">TNI (AD / AL / AU)</option>
+            <option value="Polri">Polri</option>
+            <option value="TPA STAN">TPA STAN</option>
+            <option value="TBI STAN">TBI STAN</option>
+            <option value="STIS">STIS</option>
+            <option value="Sekolah Kedinasan Lain">Sekolah Kedinasan Lain</option>
+            <option value="UNHAN">UNHAN</option>
+            <option value="Tutor Mata Pelajaran">Tutor Mata Pelajaran</option>
+          </select>
         </div>
-      </a>
-      
-      <button class="btn-tutup" onclick="tutupModal()">Nanti Saja</button>
+        <button type="submit" class="btn-wa-kirim">Kirim & Chat Admin</button>
+        <button type="button" class="btn-tutup-wa" onclick="tutupModalWa()">Batal</button>
+      </form>
     </div>
   </div>
 
   <!-- ================= SCRIPT ================= -->
   <script>
+    // --- SCRIPT MODAL KATEGORI ---
     function bukaModal(namaKategori, linkMateri, linkTryout) {
       const modal = document.getElementById('modalKategori');
       const modalTitle = document.getElementById('modalTitle');
@@ -271,8 +337,10 @@
       if(linkTryout && linkTryout !== '') { 
         btnTryout.href = linkTryout; 
         btnTryout.style.display = 'flex'; 
+        btnTryout.style.opacity = '1';
+        btnTryout.style.cursor = 'pointer';
+        btnTryout.querySelector('.pilihan-text').innerHTML = 'Mulai Simulasi TryOut<span>Uji kemampuanmu sekarang</span>';
       } else { 
-        // Kalau link TryOut kosong, kita ganti teksnya jadi "Segera Hadir" dan bikin gak bisa diklik
         btnTryout.href = '#';
         btnTryout.style.opacity = '0.6';
         btnTryout.style.cursor = 'not-allowed';
@@ -286,12 +354,45 @@
       document.getElementById('modalKategori').classList.remove('active'); 
     }
 
-    // Tutup modal kalau klik di luar kotak
     document.getElementById('modalKategori').addEventListener('click', function(e) { 
       if (e.target === this) { 
         tutupModal(); 
       } 
     });
+
+    // --- SCRIPT MODAL WA ---
+    function bukaModalWa() {
+      document.getElementById('modalWa').classList.add('active');
+    }
+
+    function tutupModalWa() {
+      document.getElementById('modalWa').classList.remove('active');
+    }
+
+    document.getElementById('modalWa').addEventListener('click', function(e) { 
+      if (e.target === this) { 
+        tutupModalWa(); 
+      } 
+    });
+
+    function kirimWa(event) {
+      event.preventDefault(); 
+      
+      const NOMOR_WA_ADMIN = "62895615420009"; 
+
+      const nama = document.getElementById('waNama').value;
+      const asal = document.getElementById('waAsal').value;
+      const program = document.getElementById('waProgram').value;
+      const target = document.getElementById('waTarget').value;
+
+      const pesan = `Halo Admin SIGMORA,%0A%0ASaya ingin konsultasi mengenai bimbel.%0A%0A*Nama:* ${nama}%0A*Asal/Kota:* ${asal}%0A*Program:* ${program}%0A*Target:* ${target}%0A%0AMohon info selengkapnya ya Kak. Terima kasih!`;
+      
+      const urlWa = `https://wa.me/${NOMOR_WA_ADMIN}?text=${pesan}`;
+      
+      window.open(urlWa, '_blank');
+      
+      tutupModalWa();
+    }
   </script>
 
 </body>
